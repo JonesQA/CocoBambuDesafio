@@ -41,19 +41,17 @@ cy.wait(20000); //Aguarda o sistema carregar
 cy.get('[src="https://api-cupdeschom.cocobambu.com/media/images/promotional_post/462470b8a8914827a74265a8c9b80a8f.png"]').click();
 cy.get('.button-submit-content > :nth-child(1)').click(); //Confirmar Pedido 
 cy.get('.bag-button-items-quantity').click(); // Verifica a Sacola
-cy.wait(5000); // Aguarda o site carregar
-cy.get('.confirm-order-button').click(); // Clica em Selecionar Forma de Pagamento
+cy.wait(6000); // Aguarda o site carregar
+cy.get('.choose-payment-method-button').click(); // Clica em Selecionar Forma de Pagamento
 cy.wait(5000); // Aguarda o site carregar
 
 //Selecionar pagamento na entrega 
-cy.get('.container > base-segments > .ion-padding-top > :nth-child(2)').click();
-cy.get('.list-container > :nth-child(1)').click(); // Seleciona Alelo Refeição 
-cy.wait(5000); // Aguarda o site carregar
-cy.get('.confirm-label').click(); // Clica em Confirmar Pedido
-cy.get('.confirm-button').click(); // Clica em Confirmar Pedido novamente
-
-// O site deve conter mensagem de avaliação
-cy.get('.container > .title').should('contain', 'Curtiu o app? Avalie!');
+cy.get('.add-button').click(); // Seleciona adicionar novo cartão
+cy.get('payment-authorizartion.ng-star-inserted > .container > :nth-child(1)').click(); // Seleciona Crédito
+cy.get('#cardNumber').type('5173 9400 2844 7776'); // Digita o número do cartão
+cy.get('#holderName').type('Leandro Jones C Santos'); // Digita o nome do titular
+cy.get('#cc-exp-date').type('12/22'); // Digita a data de validade exírada
+cy.get('.danger').should('contain', 'Cartão expirou');// Verifica se não há mensagem de erro
 
   });
 });
