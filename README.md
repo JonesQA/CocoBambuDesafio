@@ -59,13 +59,10 @@ Os testes estão organizados na pasta `cypress/e2e/`.
 *   **Objetivo:** Simular o fluxo completo de um usuário que busca por CEP antes de logar, demonstrando que o sistema não salva as informações inciais do pedido e por fim, valida mensagem de erro após inserção de CVV expirado do cartão de crédito 
 *   **Fluxo Principal:** Inserir CEP -> Selecionar produto -> Realizar Login (com código de verificação) -> Re-selecionar produto (devido a bug de persistência de carrinho pré-login) -> Seleção da Opção Crédito -> Inserção de CVV expirada -> Mensagem de Cartão Expirado. 
 
-### `LoginCocoBambu.cy.js`
+### `HorarioAtendimento.cy.js`
 
-*   **Objetivo:** Cobrir cenários de autenticação, incluindo login com usuário existente e fluxo de cadastro (a função `loginComSucesso` em `support/login/index.js` na verdade simula um cadastro).
-*   **Funções de Suporte Relevantes (em `support/login/index.js`):**
-    *   `acessarSistema()`: Navega para a URL base da aplicação.
-    *   `loginEmailExistente()`: Realiza login com credenciais de um usuário já cadastrado.
-    *   `loginComSucesso()`: Executa o fluxo de criação de uma nova conta.
+*   **Objetivo:** Testar se o sistema bloqueia corretamente as compras quando o usuário tenta acessar o aplicativo fora do horário de funcionamento da loja.
+*   **Fluxo Principal**: Acessar o sistema -> Realizar login com e-mail existente -> Aguardar carregamento do sistema (12s) -> Validar se a loja está fechada -> Exibição da mensagem "Loja Fechada"
 
 ### Teste de API
 
