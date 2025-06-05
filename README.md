@@ -42,31 +42,31 @@ Você pode executar os testes de duas formas principais:
 
 ## Documentação Técnica: Testes Realizados
 
-Os testes estão organizados na pasta `cypress/e2e/`.
+Os testes estão organizados na pasta `cypress/e2e/testesUi`.
 
-### `ErroCompraPix.cy.js`
+### `PAGAMENTO PIX INCORRETO`
 
 *   **Objetivo:** Validar o comportamento do sistema ao tentar finalizar uma compra utilizando PIX, verificando que este método de pagamento está indisponível.
 *   **Fluxo Principal:** Login -> Seleção de produto -> Tentativa de pagamento com PIX -> Verificação de mensagem de erro.
 
-### `ErroPromoção.cy.js`
+### `Login e Seleção de Promoção com Erro`
 
 *   **Objetivo:** Testar a aplicação ao selecionar uma promoção específica que pode apresentar um erro de carregamento ou indisponibilidade.
 *   **Fluxo Principal:** Login -> Seleção de item promocional -> Verificação de indicador de erro.
 
-### `InserirEndereçoeComprar.cy.js`
+### `Cartão expirou`
 
 *   **Objetivo:** Simular o fluxo completo de um usuário que busca por CEP antes de logar, demonstrando que o sistema não salva as informações inciais do pedido e por fim, valida mensagem de erro após inserção de CVV expirado do cartão de crédito 
 *   **Fluxo Principal:** Inserir CEP -> Selecionar produto -> Realizar Login (com código de verificação) -> Re-selecionar produto (devido a bug de persistência de carrinho pré-login) -> Seleção da Opção Crédito -> Inserção de CVV expirada -> Mensagem de Cartão Expirado. 
 
-### `HorarioAtendimento.cy.js`
+### `Horario inadequado`
 
 *   **Objetivo:** Testar se o sistema bloqueia corretamente as compras quando o usuário tenta acessar o aplicativo fora do horário de funcionamento da loja.
 *   **Fluxo Principal**: Acessar o sistema -> Realizar login com e-mail existente -> Aguardar carregamento do sistema (12s) -> Validar se a loja está fechada -> Exibição da mensagem "Loja Fechada"
 
 ### Teste de API
 
-*   **`apiCarrinho.cy.js` (e `spec.cy.js` - *recomenda-se consolidar*)**
+*   **`apiCarrinho.cy.js` **
     *   **Objetivo:** Testar a API `dummyjson.com/carts` para as operações básicas de um carrinho de compras.
     *   **Endpoints e Métodos Testados:**
         *   `POST /carts/add`: Adicionar um novo carrinho.
